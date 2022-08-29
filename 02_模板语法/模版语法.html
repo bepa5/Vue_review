@@ -1,0 +1,46 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-29 14:13:14
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-29 14:15:41
+ * @FilePath: 模版语法.html
+-->
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-29 10:07:28
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-29 11:00:19
+ * @FilePath: vue学习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue学习</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>插值语法</h1>
+        <h2> {{name}}</h2>
+        <hr>
+        <h1>指令语法</h1>
+        <a v-bind:href="url">百度</a>
+    </div>
+    <script type="text/javascript" >
+        Vue.config.productionTip=false
+        
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name:'nihao',
+                url:'www.baidu.com',
+            }
+        })
+    </script>
+</body>
+</html>

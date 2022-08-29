@@ -1,0 +1,45 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-29 15:20:00
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-29 15:52:23
+ * @FilePath: 数据代理.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1></h1>
+    </div>
+    <script type="text/javascript">
+       let obj = {
+        name:'11',
+        sex:'000'
+       }
+       Object.defineProperty(obj,'age',{
+        value:18,
+        //设置enumerable[可枚举]，可以参与循环遍历
+        enumerable:true,
+        //控制属性是否可以被修改
+        writable:true,
+        // 控制属性是否被删除
+        configurable:true,
+        get(){
+            return
+        },
+        set(value){
+            
+        }
+       })
+       console.log(obj)
+    </script>
+</body>
+</html>

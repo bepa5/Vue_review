@@ -1,0 +1,59 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-29 16:58:01
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-29 17:47:01
+ * @FilePath: 计算属性.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <input type="text" v-model='firstname'><br>
+        <input type="text" v-model='lastname'><br>
+        {{fullname}}
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    firstname: '111',
+                    lastname: '2222'
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+                // 完整写法
+                // fullname: {
+                //     get() {
+                //         return this.lastname + '-' + this.firstname
+                //     },
+                //     set(value) {
+                //         const arr = value.split('-')
+                //         this.lastname = arr[1]
+                //         this.firstname = arr[0]
+                //     }
+                // }
+                //简写
+                fullname(){
+                    return   this.lastname + '-' + this.firstname
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

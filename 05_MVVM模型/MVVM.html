@@ -1,0 +1,35 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-29 14:35:21
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-29 15:10:52
+ * @FilePath: MVVM.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>{{name}}</h1>
+    </div>
+    <script type="text/javascript" >
+        Vue.config.productionTip=false
+        const m = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    name:'nihao'
+                }
+            }
+        })
+        m.$mount('#root')
+    </script>
+</body>
+</html>
