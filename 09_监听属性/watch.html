@@ -1,0 +1,60 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-30 09:19:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-30 10:17:48
+ * @FilePath: watch.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>今天天气{{info}}</h1>
+        <button @click="isHot=!isHot">1111</button>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data(){
+                return{
+                    isHot:true,
+                    numbers:{
+                        a:1,
+                        b:2,
+                    }
+                }
+            },
+            methods:{
+
+            },
+            computed:{
+                info(){
+                    return this.isHot?'热🔥':'不🔥'
+                }
+            },
+            watch:{
+                isHot:{
+                    immediate:true,
+                    handler(newValue,oldValue){
+                        console.log(newValue,oldValue)
+                    }
+                },
+                numbers:{
+                    deep:true,
+                    handler(newValue,oldValue){
+                        console.log(newValue,oldValue)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

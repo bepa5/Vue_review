@@ -1,0 +1,77 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-30 14:29:39
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-30 15:48:27
+ * @FilePath: 渲染.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <ul>
+            <input type="text" placeholder="输入" v-model='keydown'>
+            <li v-for="p in filPerson" :key="p.id">
+                {{p.name}}--{{p.age}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        //watch 过滤
+        // new Vue({
+        //     el:'#root',
+        //     data(){
+        //         return{
+        //             persons:[
+        //                 {id:'001',name:'马冬梅',age:11},
+        //                 {id:'002',name:'马东与',age:12},
+        //                 {id:'003',name:'冬雪',age:13}
+        //             ],
+        //             keydown:'',
+        //             filPerson:[]
+        //     }
+        // },
+        // watch:{
+        //     keydown:{
+        //         immediate:true,
+        //         handler(val){
+        //             this.filPerson = this.persons.filter((p)=>{
+        //                 return p.name.indexOf(val) !==-1
+        //             })
+        //         }
+        //     }
+        // }
+        // })
+
+        //computed  过滤
+        new Vue({
+            el:'#root',
+            data(){
+                return{
+                    persons:[
+                        {id:'001',name:'马冬梅',age:11},
+                        {id:'002',name:'马东与',age:12},
+                        {id:'003',name:'冬雪',age:13}
+                    ],
+                    keydown:'',
+                }
+            },
+            computed:{
+                filPerson(){
+                   return this.persons.filter((p)=>{
+                        return p.name.indexOf(this.keydown) !== -1
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

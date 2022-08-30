@@ -1,0 +1,60 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-30 15:51:05
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-30 16:07:51
+ * @FilePath: 列表排序.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表排序</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <ul>
+            <input type="text" placeholder="输入" v-model='keydown'>
+            <button @click="type1 =2">升</button>
+            <button @click="type1 =1">降</button>
+            <button @click="type1 =0">原</button>
+            <li v-for="p in filPerson" :key="p.id">
+                {{p.name}}--{{p.age}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data(){
+                return{
+                    persons:[
+                        {id:'001',name:'马冬梅',age:11},
+                        {id:'002',name:'马东与',age:18},
+                        {id:'003',name:'冬雪',age:13}
+                    ],
+                    keydown:'',
+                    type1:0,
+                }
+            },
+            computed:{
+                filPerson(){
+                  const arr =  this.persons.filter((p)=>{
+                        return p.name.indexOf(this.keydown) !== -1
+                    })
+                    if(this.type1){
+                        arr.sort((p1,p2)=>{
+                            return this.type1 ===1 ? p2.age-p1.age : p1.age-p2.age
+                        })
+                    }
+                    return arr
+                }
+            }
+        })
+    </script>
+</body>
+</html>
