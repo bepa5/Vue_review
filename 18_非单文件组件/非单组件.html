@@ -1,0 +1,74 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-31 17:29:23
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-31 17:37:31
+ * @FilePath: 非单组件.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <x></x>
+        <xx></xx>
+    </div>
+    <script type="text/javascript">
+        const school = Vue.extend({
+            data() {
+                return {
+                    xn: '111',
+                    xz: '2222'
+                }
+            },
+            template: `
+            <div>
+            <h1>{{xn}}</h1>
+            <h1>{{xz}}</h1>
+            </div>
+            `
+        })
+        const  student =Vue.extend({
+            data() {
+                return {
+                    xx: '133331',
+                    xxx: '444444'
+                }
+            },
+            template: `
+            <div>
+            <h1>{{xx}}</h1>
+            <h1>{{xxx}}</h1>
+            </div>
+            `
+        })
+
+        new Vue({
+            el: '#root',
+                components:{
+                    x:school,
+                    xx:student
+                },
+            methods: {
+
+            },
+            watch: {
+
+            },
+            filters: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

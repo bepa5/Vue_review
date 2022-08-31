@@ -1,0 +1,69 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-31 14:00:05
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-31 14:28:16
+ * @FilePath: filters.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script src="../js/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.5/dayjs.min.js"></script>
+</head>
+<body>
+    <dib id="root">
+        <h1>{{time}}</h1>
+        <h2>计算属性：{{jss}}</h2>
+        <h2>methods:{{ff()}}</h2>
+        <h2>过滤:{{ time | filtime}}</h2>
+        <h2>过滤:{{ time | filtime | filtime2}}</h2>
+        <h2>过滤传参:{{ time | filtim3('YYYY-MM-DD HH:mm')}}</h2>
+        <h2>过滤传参:{{ time | filtime4('YYYY_MM')}}</h2>
+        <h2>全局过滤器{{time | filtime4 |ffff }}</h2>
+    </dib>
+    <script type="text/javascript">
+        Vue.filter('ffff',function(value){
+            return value.slice(0,4)
+        })
+        new Vue({
+            el:'#root',
+            data(){
+                return{
+                    time:1661926215061
+                }
+            },
+            methods: {
+                ff(){
+                    return dayjs().format('YYYY-MM-DD HH:mm',this.time)
+                }
+            },
+            computed:{
+                jss(){
+                    return dayjs().format('YYYY-MM-DD HH:mm',this.time)
+
+                }
+            },
+            filters:{
+                filtime(){
+                    return dayjs().format('YYYY-MM-DD HH:mm',this.time)
+                },
+                filtime2(){
+                    return dayjs().format('YYYY',this.time)
+                },
+                filtim3(value,str){
+                    return dayjs(value).format(str)
+                },
+                filtime4(value,str='YYYY-MM-DD HH:mm'){
+                    return dayjs(value).format(str)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

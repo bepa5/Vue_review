@@ -1,0 +1,62 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-31 10:27:27
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-31 11:07:36
+ * @FilePath: 表单数据.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="root">
+        <form @submit.prevent="demo">
+            <label for="zhanghu">账号: <input type="text" id="zhanghu" v-model='account'></label><br>
+            <label for="mima">密码: <input type="password" id="mima" v-model="password"></label><br>
+            <label for="sex">性别: 男: <input type="radio" name="sex" v-model="sex" value="man"> 女: <input type="radio" name="sex"  v-model="sex" value="woman"></label><br>
+            <label for="hobby">爱好: 学习<input type="checkbox"  v-model="hobby" value="studes"></label> 打游戏<input type="checkbox"  v-model="hobby" value="game"> 吃饭<input type="checkbox"  v-model="hobby" value="eat"></label></label><br>
+            <label for="">所属公司
+                <select name="" id="" v-model="affiliation">
+                    <option value="beijing">北京</option>
+                    <option value="shanghai">上海</option>
+                    <option value="shanxi">陕西</option>
+                    <option value="shanxi1">山西</option>
+                    <option value="zhengzhou">郑州</option>
+                </select>
+            </label><br>
+            <label for="xinxi"> 其他信息 <textarea name="" id="xinxi" v-model="xinxi"></textarea></label><br>
+            <label for=""><input type="checkbox" name="" id="" v-model="yuedu">阅读并接受<a href="www.google.com">《用户协议》</a></label>
+            <br>
+            <button>提交</button>
+        </form>
+     </div>
+     <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data(){
+                return{
+                    account:'',
+                    password:'',
+                    sex:'',
+                    hobby:[],
+                    affiliation:'',
+                    xinxi:'',
+                    yuedu:'',
+                }
+            },
+            methods:{
+                demo(){
+                    console.log(this._data)
+                }
+            }
+        })
+     </script>
+</body>
+</html>

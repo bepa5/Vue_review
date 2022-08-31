@@ -1,0 +1,54 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-08-31 15:15:20
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-08-31 15:52:17
+ * @FilePath: 指令.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1 v-text="n"></h1>
+        <h2 v-big="n"></h2>
+        <button @click="n++">++++</button>
+        <br>
+        <input type="text" v-model="n" v-fbing:value="n">
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data(){
+                return{
+                    n:1
+                }
+            },
+            directives:{
+                big(element,binding){
+                    element.innerText=binding.value*10
+                },
+                //获取焦点
+                fbing:{
+                    bind(element,binding){
+                        element.value=binding.value
+                    },
+                    inserted(element,binding){
+                        element.focus()
+                    },
+                    update(element,binding){
+                        element.value=binding.value
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
