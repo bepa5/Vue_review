@@ -1,0 +1,42 @@
+<!--
+ * @Descripttion: 
+ * @Author: guoxiaoqiang
+ * @Date: 2022-09-02 15:16:19
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-09-02 15:35:51
+ * @FilePath: index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<body>
+    <div>
+        <h1>localStorage</h1>
+        <button onclick="baocun()">保存</button>
+        <button onclick="huoqu()">获取</button>
+        <button onclick="shanchu()">删除</button>
+        <button onclick="qingkong()">清空</button>
+    </div>
+    <script type="text/javascript">
+        let p ={name:'dabaobei',age:33,sex:'女'}
+        function baocun(){
+            localStorage.setItem('G','1111')
+            localStorage.setItem('boy',JSON.stringify(p))
+        }
+        function huoqu(){
+            console.log(localStorage.getItem('boy'))
+        }
+        function shanchu(){
+            localStorage.removeItem('G')
+        }
+        function qingkong(){
+            localStorage.clear()
+        }
+    </script>
+</body>
+</html>

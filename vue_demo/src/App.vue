@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <LIst></LIst>
-    <Footer></Footer>
+    <Student></Student>
+    <Company></Company>
   </div>
 </template>
 
 <script>
-
-import Header from './components/Header.vue'
-import LIst from './components/LIst.vue'
-import Footer from './components/Footer.vue'
+import Company from "./components/Company.vue";
+import Student from "./components/Student.vue";
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      
+    };
+  },
+  methods:{
+    
+  },
   components: {
-    Header,
-    LIst,
-    Footer
-  }
-}
+    Company,
+    Student
+  },
+};
 </script>
 
 <style>

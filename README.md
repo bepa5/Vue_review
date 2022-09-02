@@ -277,3 +277,21 @@
         data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是[Vue实例对象]。
     5。VueComponent的实例对象，以后简称vc ( 也可称之为:组件实例对象)。
       Vue的实例对象，以后简称vm。
+#20 localStorage  SessionStorage
+  webStorage
+  1.存储内容大小-般支持5MB左右(不同浏览器可能还不一样)
+  2.浏览器端通过Window.sessionStorage和Window.localStorage属性来实现本地存储机制。
+  3.相关API: .
+    1.| xxxxxStorage. setItem('key', 'value');
+      该方法接受-一个键和值作为参数,会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+    2. xxxxxStorage. getItem(' person' )
+      该方法接受一个键名作为参数， 返回键名对应的值。
+    3. | xxxxxStorage . removeItem('key');
+      该方法接受一个键名作为参数, 并把该键名从存储中删除。
+    4. xxxxxStorage.clear()
+      该方法会清空存储中的所有数据。
+  4.备注:
+    1. SessionStorage存储的内容会随着浏览器窗口关闭而消失。
+    2. LocalStorage存储的内容，需要手动清除才会消失。
+    3. xxxxStorage. getItem(xxx)如果xx对应的value获取不到，那么getttem的返回值是null.
+    4. JSON.parse(nu1l) 的结果依然是null。
