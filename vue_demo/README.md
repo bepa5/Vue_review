@@ -97,3 +97,139 @@
   5.解绑自定义事件this. $off(' atguigu' )
   6.组件上也可以绑定原生DOM事件，需要使用native修饰符。
   7.注意:通过this. $refs . xxx. $on( 'atguigu'，回调)绑定自定义事件时，回调要么配置在methods中，要么用箭头函数，否则this指向会出问题!
+## 消息汀岡与友布(pubsub)
+    1.一种组件问通信的方式，适用于任意组件问通信。
+    2. 使用步骤:
+      1. 安装pubsub: npm i pubsub-js
+      2.引入: import pubsub from 'pubsub-js'
+      3.接收数据: A组件想接收数据，则在A组件中订阅消息，订阅的回调留在A组件自身。
+        methods()(
+        demo(data)(.....
+          )
+        mounted() (
+          this.pid . pubsub. subscribe( 'xж*" ,this.demo) //订阅消息
+        )    
+    4. 提供数据: pubsub -publish('xx" ,数据)
+    5. 最好在bebeforeDestory钩子中，用PubSub.unsubscpibe(pid)去<span sty1e="color:red">取消订阅</span>
+## nextTick
+  1.语法: this. SnextTick(团调函数)
+  2.作用:在下一-次 DOM更新结束后执行其指定的回调。
+  3.什么时候用:当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行。
+## 3.写法:
+  1.准备好样式:
+    元素进入的样式:
+      1, v-enter:进入的起点
+      2. v-enter-active;进入过程中
+      3. venter-40:进入的降点
+    ●元素离开的样式:
+      1. vleave:离开的起点
+      2. -leave-active:离开过程中
+      3. v-leave-to:离开的峰点  
+  2.使用transition包真要过度的元素，并配置name属性:
+    <transition name='hello'>
+    <h1 v-show="isShow">你好呀</h1>
+    </transition>
+  3.备注:若有多个元素需要过度，则需要使用: ctramsition-group), 且每个元素都要指定key值。
+## vue脚手架配置代理
+  方法一
+    在vue.config.js中添加如下配置: .
+    devServer:{
+    proxy:"http://localhost:5000
+    说明:
+      1.优点:配置简单,请求资源时直接发给前端(8080) 即可。
+      2.缺点:不能配置多个代理，不能灵活的控制请求是否走代理。
+      3.工作方式:若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器(优先匹配前端资源)
+  方法二
+    编写vue.config.js配置具体代理规则:
+    module. exports = {
+       devServer:
+       proxy: {
+       '/api1': {// 匹配所有以'/apil '开头的请求路径
+       target: 'http://localhost:5000',// 代理目标的基础路径
+       changeOrigin: true,
+       pathRewrite: {'^/api1': ''}
+       },
+       '/api2': {//匹配所有以'/api2' 开头的请求路径
+       target: ' http://localhost:5001',//代理目标的基础路径
+       changeOrigin: true,
+       pathRewrite: {'^/api2': "'}
+        }
+       }
+      }
+      /*
+        changeOrigin设置为true时，服务器收到的请求头中的host为: localhost: 5000
+        changeOrigin设置为false时，服务器收到的请求头中的host为: localhost: 8080
+        changeOrigin默认值为true
+      */
+    说明:
+      1.优点:可以配置多个代理，且可以灵活的控制请求是否走代理。
+      2.缺点:配置略微繁琐，请求资源时必须加前缀。
+## 插槽
+  1.作用:让父组件可以向子组件指定位置插入htm结构，也是- -种组件间通信的方式，适用于父组件===>子组件。
+  2.分类:默认插槽、具名插槽、作用域插槽
+  3.使用方式:
+    1.默认插槽:
+      父组件中，
+        <Category>
+        <div>htm1结构1</div>
+        </Category>
+      子组件中，
+        <template>
+        <div>
+        <1--定义插槽-->
+        <slot>插槽默认内容...</slot>
+        </div>
+        </template>
+    2.具名插槽:
+      父组件中:
+        <Category>
+        <template slot="center">
+        <div>html1</div>
+        </template>
+        <template v-slot='footer'>
+        <div>htm12</div>
+        </template>
+        </Category>
+      子组件中，
+        <template>
+        <div>
+        <!--定乂插槽-->
+        <slot name="center" >内容..</slot>
+        <slot namea="footer" >内容2...</slot>
+        </div>
+        </template>
+    3. 作用域插槽:
+      1.理解:数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。 (games数据在Category组件中， 但使用
+      数据所遍历出来的结构由App组件决定)
+      2. 具体编码:
+      父组件中，
+        <Category>
+        <template scope="scopeData">
+        <1人生成的是u1列表-->
+        <ul>
+        <li v-for="g in scopeData-games" :key="g">{{e}}</li>
+        </ul>
+        </template>
+        </Category>
+        <Category>
+        <template slot-scope=" scopeData">
+        <!--生成的是h4柝題-->
+        <h4 v-for="g in scopeData.games" :key="g">{{8}}</h4>
+        </template>
+        </Category>
+      子组件中，
+        <template>
+        <div>
+        <slot :ganesa="games"></slot>
+        </div>
+        </template>
+        <script>
+        export default {
+        name: 'Category'。
+        props:['title'],
+        //数据在子组件自身
+        data() {
+        return{
+        games:['红色警戒"，"穿越火线"，“劲舞团'，‘超级玛丽']
+        )
+        </script>
