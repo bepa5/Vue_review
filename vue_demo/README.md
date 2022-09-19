@@ -233,3 +233,39 @@
         games:['红色警戒"，"穿越火线"，“劲舞团'，‘超级玛丽']
         )
         </script>
+## |Vuex
+  1.概念
+    在Vue中实现集中式状态(数据)管理的一个Vue插件,对vue应用中多个组件的共享状态进行集中式的管理(读/写)， 也是- 种组件
+    间通信的方式，且适用于任意组件间通信。
+  2.何时使用?
+    多个组件需要共享数据时
+  3.搭建vuex环境
+    1. 创建文件: src/store/ index.js
+      引入Vue核心库
+      import Vue from 'vue '
+      引入Vuex
+      import Vuex from 'vuex'
+      //应用Vuex插件
+      Vue.use(Vuex)
+      //准备actions对象一响应组件 中用户的动作
+      const actions = (]
+      //准备mutations对象一修改state中的数据
+      const mutations = f ]
+      //准备state对象一保存具 体的数据
+      const state = (]
+      //6J3#AEstore
+      export default new Vuex. Store({
+      actions ,
+      mutations,
+      state
+      })
+    2.在main.js中創建vm吋侍入store配置項
+      引入store
+      import store from ' ./store'
+      //创建vm
+      new Vue({
+      el: '#app',
+      render: h => h(App),
+      store
+      })
+
