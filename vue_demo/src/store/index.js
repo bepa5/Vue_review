@@ -3,7 +3,7 @@
  * @Author: guoxiaoqiang
  * @Date: 2022-09-19 17:08:01
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-19 18:07:53
+ * @LastEditTime: 2022-09-20 17:48:40
  * @FilePath: index.js
  */
 //引入vue
@@ -43,13 +43,19 @@ const mutations={
 }
 //创建一个用于数据储存
 const state={
-    sum:0
+    sum:0,
+    hard:'study'
 }
-
+const getters={
+    bigSum(state){
+        return state.sum*10
+    }
+}
 //创建store
  const store=new Vuex.Store({
     actions,
     mutations,
-    state
+    state,
+    getters
 })
 export default store

@@ -268,4 +268,80 @@
       render: h => h(App),
       store
       })
-
+  4.基本使用
+    1.初始化数据、配置actions、配置mutations，操作文件store.js
+    //引入vue核心库
+    import Vue from 'vue "
+    //引入vuex
+    import Vuex from 'vuex "
+    //引用vuex
+    Vue.use(Vuex)
+    const actions = {
+      //响应组件中加的动作
+      jia(context,value){
+            console.log(' actions中的jia被调用了" , miniStore ,value)
+            context. commit( 'JIA' ,value)
+          },
+      }
+    const mutations = {
+    //执行加
+        JIA(state,value)f
+         console.log( " mutations中的JIA被调用了" , state,value)
+            state.sum += value 
+          }
+        }
+    //初始化数据
+    const state ={
+    sum:0
+    )
+    //创建并暴露store
+    export default new Vuex. Store((
+      actions ,
+      mutations,
+      state,
+    })
+    2.组件中读取vuex中的数据: $store. state. sum |
+    3.组件中修改vuex中的数据: $store.dispatch( 'action中的方法名'，数据)或$store. commit(，mutations中的方法名' ,数据)
+    备注:若没有网络请求或其他业务逻辑，组件中也可以越过actions,即不写dispatch,直接编写commit
+  5.getters的使用
+    1.概念:当state中的数据需要经过加工后再使用时，可以使用getters加工。
+    2.在store.js中追加getters配置
+    const getters = {
+    bigSum(state){
+    return state.sum * 10
+    }
+    //创建并暴露 store
+    export default new Vuex.Store( f
+      getters
+    ])
+    3.组件中读取数据: $store. getters . bigSum
+  6.四个map方法的使用
+    1. mapState方法:用于幇助我仞映射state中的数据カ汁算属性
+      computed: {
+      //借助mapState生成计算属性，(对象写法)
+      .mapState({sum: 'sum' ,school:'school' ,subject:'subject'}),
+      //借助mapState生成计算属性(数组写法)
+      ...mapState(['sum', 'school', 'subject']),
+      ),
+    2. mapGetters方法:用于幇助我們映射getters中的数据カ汁算属性
+      computed:
+      // 借助mapGetters生成计算属性: bigSum (对象写法)
+      ...mapGetters({bigSum: 'bigSum'}),
+      1/#B)mapGetters生成计算属性- bigSum (数组写法)
+      .. . mapGetters(['bigSum'])
+      ),
+    3. mapActions方法:用于幇助我們生成与actions 対活的方法，即:包含$store . dispatch(xx)的凾数
+      methods:{
+      //fmapActionsE59: incrementOdd, incrementWait (对象形式)
+      ...mapActions((increment0dd: 'jia0dd' , incrementWait: 'jiaWait'))
+      //fmapActions5t; increment0dd. incrementWait (数组形式)
+      . .mapActions(['jia0dd' , " jiaWait'])
+      }
+    4. mapMutations方法:用于幇助我們生成与mutations対活的方法，即:包含$store. commit(xxx)的凾数
+      methods:{
+      //fmapActions生成: increment. decrement (对象形式)
+      .. . mapMutations((increment: 'JIA' ,decrement:'JIAN']),
+      //RimapMutations生成; JIA. JIAN (数组形式)
+      .mapMutations(['JIA','JIAN']),
+      }
+      备注: mapActions 与mapMutations使用时，若需要传递参数需要:在模板中绑定事件时传递好参数，否则参数是事件对象。
