@@ -345,3 +345,67 @@
       .mapMutations(['JIA','JIAN']),
       }
       备注: mapActions 与mapMutations使用时，若需要传递参数需要:在模板中绑定事件时传递好参数，否则参数是事件对象。
+  7.模块化+命名空间
+    1.目的:让代码更好维护，让多种数据分类更加明确。
+    2.修改store.js
+      const countAbout = {
+      namespaced:true,//开启命名空间
+      state:{x:1},
+      mutations :
+      { ... },
+      actions: { ... },
+      getters:
+        bigSum(state){
+         return state.sum寒10
+          }
+        }
+      }
+      const personAbout = {
+        namespaced:true,//开启命名空间
+        state:{ ... },
+        mutations: { ... },
+        actions: { ... }
+      }
+      const store = new Vuex. Store({
+          modules: {
+          countAbout ,
+          personAbout
+        }
+      })
+    3.开启命名空间后,组件中读取state数据:
+      //方式一:自己直接读取
+      this.$store.state. personAbout.list
+      //方式二:借助mapState读取:
+      .. . mapState('countAbout' ,[' sum', 'school'，'subject']),
+    4.开启命名空间后，组件中读取getters数据:
+      //方式一:自己直接读取
+      this.$store. getters [ 'personAbout/firstPersonName ' ]
+      //方式二:借助mapGetters读取:
+      .. . mapGetters('countAbout‘，[ 'bigSum'])
+    5.开启命名空间后，组件中调用dispatch
+      //方式一:自己直接dispatch
+      this.$store.dispatch(' personAbout/ addPersonWang' ,person)
+      //方式二:借助mapActions:
+      .. . mapActions(' countAbout '，{incrementOdd: 'jiaOdd '，incrementWait: 'jiaWait'})
+    6.开启命名空间后，组件中调用commit
+      //方式一:自己直接commit
+      this. $store. commit(' personAbout/ADD PERSON ,person)
+      //方式二:借助mapMutations:
+      .. . mapMutations(' countAbout '，{increment: 'JIA' , decrement: 'JIAN'}),
+## 6.1router
+    6.1.1 vue-router的理解
+      vue的一个插件库,专i门]用来实现SPA应用←
+    6.1.2对SPA应用的理解←
+      1.单页 Web应用(single page web application, SPA)。。
+      2.整个应用只有一 个完整的页面。。index. html
+      3.点击页面中的导航链 受不会刷新页面只会做页面的局部更新。9 )
+      4.数据需要通过 ajax请求获取。
+    6.1.3路由的理解←
+      1.什么是路由?
+        1. 一个路由就是一组映射关系(key - value) 。
+        2. key 为路径, value可能是function或componente
+      2.路由分类
+        1. 后端路由:∈
+        1)理解: value是function,用于处理客户端提交的请求。
+        2)工作过程: 服务器接收到个请求时，根据请求路径找到匹配的函数来处
+        理请求，返回响应数据。

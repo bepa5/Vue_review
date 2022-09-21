@@ -3,7 +3,7 @@
  * @Author: guoxiaoqiang
  * @Date: 2022-09-01 17:21:38
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-09-20 17:58:58
+ * @LastEditTime: 2022-09-21 17:27:15
  * @FilePath: Sum.vue
 -->
 <template>
@@ -33,13 +33,12 @@ export default {
     };
   },
   computed:{
-    ...mapState({hard:'hard',sum:'sum'}),
-    ...mapGetters({bigSum:'bigSum'}),
-   
+    ...mapState('sum',{hard:'hard',sum:'sum'}),
+    ...mapGetters('sum',{bigSum:'bigSum'}),
   },
   methods: {
-     ...mapActions({subtraction:'jian',odd:'jianodd'}),
-    ...mapMutations({add:'JIA'}),
+     ...mapActions('sum',{subtraction:'jian',odd:'jianodd'}),
+    ...mapMutations('sum',{add:'JIA'}),
     // add() {
     //   //如果action有逻辑处理可以用dispatch
     //   //this.$store.dispatch("jia", this.n);
@@ -53,7 +52,7 @@ export default {
     //   this.$store.dispatch("jianodd", this.n); 
     // },
     waiter(){
-        this.$store.dispatch("jianwaiter", this.n); 
+        this.$store.dispatch("sum/jianwaiter", this.n); 
     }
   },
 };
