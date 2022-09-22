@@ -1,14 +1,18 @@
 <template>
   <div id="app">
-    <Sum></Sum>
-    <br>
-     <Addperson></Addperson>
+    <!-- 一般组件-->
+    <Banner></Banner>
+    <!-- 路由跳转    路由组件-->
+    <router-link to='/Home'>Home</router-link>
+     <router-link to='/About'>About</router-link>
+     <br>
+     <!-- 视图呈现 -->
+     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Sum from "./components/Sum.vue";
-import Addperson from './components/Addperson.vue'
+import Banner from './components/Banner.vue'
 export default {
   name: "App",
   data() {
@@ -19,8 +23,7 @@ export default {
   methods:{
   },
   components: {
-    Sum,
-    Addperson
+    Banner
   },
   watch:{
   }
