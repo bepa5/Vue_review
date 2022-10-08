@@ -3,7 +3,7 @@
  * @Author: guoxiaoqiang
  * @Date: 2022-09-22 15:12:55
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-08 14:51:01
+ * @LastEditTime: 2022-10-08 14:36:28
  * @FilePath: index.js
  */
 //该文件专门用于管理路由
@@ -36,12 +36,6 @@ export default new VueRouter({
                             name:'xiangqing',
                             path: 'Detail/:id/:title',
                             component: Detail,
-                            //props 配合params使用
-                            //props:true
-                            //函数式props
-                            props($route){
-                                return {id:$route.params.id,title:$route.params.title}
-                            }
                         }
                     ]
                 }

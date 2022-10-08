@@ -3,7 +3,7 @@
  * @Author: guoxiaoqiang
  * @Date: 2022-09-22 16:21:55
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-08 14:37:03
+ * @LastEditTime: 2022-09-22 17:24:40
  * @FilePath: Message.vue
 -->
 <template>
@@ -13,12 +13,13 @@
         :to="{
           //path: '/About/Message/Detail',
           name:'xiangqing',
-          params:{
+          query: {
             id: p.id,
             title: p.title,
           },
         }"
-        >{{ p.title }}</router-link>
+        >{{ p.title }}</router-link
+      >
     </li>
     <router-view></router-view>
   </ul>

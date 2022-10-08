@@ -508,3 +508,86 @@
           }
           }"
           >跳转</router-link>
+    6.路由的params参数
+      1.配置路由，声明接收params参数
+      path:'/home',
+      component Home ,
+      children:[
+      path: 'news " ,
+      component :News
+      ),
+      (      
+      component:Message,
+      children:[
+      (
+      name:" xiangqing',
+      path: " detail/:id/:title', //使用占位符声明接收params参数
+      component :Detail
+      ]
+      )
+      2. 传递参数
+        <1--跳转并携带params参数，to的字符串写法-->
+        <router-link :to=" /home/mes age/detail/666/fFtf " >i</router-link>
+        <1--跳转并携带params参数，to的对象写法-->
+        <router-link
+        :to="(
+        name: "xiangqing" ,
+        params:{
+        id:666,
+        title: 'tRtF'
+        }"
+        >跳转</router-link>
+        特别注意:路由携带params参数时， 若使用的对象写法，则不能使用path配置项，必须使用name配置!
+      3.接收参数:
+        $route.params.id
+        $route.params.title
+    7.props
+      作用:让路由组件更方便的收到参数
+      name: 'xiangqing',
+      path: 'detail/:id',
+      component :Detail,
+      //第-种写法: props值为对象， 该对象中所有的key-value的组合最终都会通过props传给Detail组忤
+      11 props:(a:900)
+      //第二种写法: props值为布尔值，布尔值为true,则把路由收到的所有params参数通过props传给Detail组件
+      11 props:true
+      //第三种写法: props值为函数， 该函数返回的对象中每一组key-value都会通过props传拾Detai1组件
+      props(route)(
+      return
+      id:route .query. id,
+      title:route query.title
+      )
+      )
+    8. <router -link>的replace属性I
+      1.作用:控制路由跳转时操作浏览器历史记录的模式
+      2.浏览器的历史记录有两种写入方式:分别为push和replace，push 是追加历史记录，replace 是替换当前记录。路由跳转日
+      默认为push
+      3.如何开启replace模式: <router-link replace ...... >News</router-link>
+    9.编程式路由导航
+      1.作用:不借助router-link>突現路由跳装，辻路由跳特更加灵活
+      2.具体编码:
+        //$router的API
+        this.$router.push((
+        nane:'xiangqing',
+        params:{
+        id:xxx,
+        title:xx
+        }
+        })
+        this. $router.replace((
+        name:' xiangqing' ,
+        params:f
+        id:xxx,
+        title:xxx
+        }
+        })
+    10.缓存路由组件
+      1.作用:让不展示的路由组件保持挂载，不被销毁。
+      2.具体编码: .
+      <keep-alive include="News">
+      <router-view></router-view>
+      </keep-alive>
+    11.两个新的生命周期钩子
+      1.作用:路由组件所独有的两个钩子,用于捕获路由组件的激活状态。|
+      2.具体名字:
+        1. activated 路由组件被激活时触发。
+        2. deactivated 路由组件失活时触发。
